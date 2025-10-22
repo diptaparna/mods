@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/charmbracelet/mods/internal/proto"
-	"github.com/charmbracelet/mods/internal/stream"
+	"github.com/diptaparna/mods/internal/proto"
+	"github.com/diptaparna/mods/internal/stream"
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/azure"
 	"github.com/openai/openai-go/option"

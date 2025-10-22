@@ -25,15 +25,15 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/glamour"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/charmbracelet/mods/internal/anthropic"
-	"github.com/charmbracelet/mods/internal/cache"
-	"github.com/charmbracelet/mods/internal/cohere"
-	"github.com/charmbracelet/mods/internal/google"
-	"github.com/charmbracelet/mods/internal/ollama"
-	"github.com/charmbracelet/mods/internal/openai"
-	"github.com/charmbracelet/mods/internal/proto"
-	"github.com/charmbracelet/mods/internal/stream"
 	"github.com/charmbracelet/x/exp/ordered"
+	"github.com/diptaparna/mods/internal/anthropic"
+	"github.com/diptaparna/mods/internal/cache"
+	"github.com/diptaparna/mods/internal/cohere"
+	"github.com/diptaparna/mods/internal/google"
+	"github.com/diptaparna/mods/internal/ollama"
+	"github.com/diptaparna/mods/internal/openai"
+	"github.com/diptaparna/mods/internal/proto"
+	"github.com/diptaparna/mods/internal/stream"
 )
 
 type state int
