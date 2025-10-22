@@ -1,4 +1,4 @@
-module github.com/charmbracelet/mods
+module github.com/diptaparna/mods
 
 go 1.24.0
 
