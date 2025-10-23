@@ -1,7 +1,7 @@
 # {{ index .Help "api" }}
-default-api: openai
+default-api: google
 # {{ index .Help "model" }}
-default-model: gpt-4o
+default-model: flash-lite
 # {{ index .Help "format-text" }}
 format-text:
   markdown: '{{ index .Config.FormatText "markdown" }}'
@@ -24,13 +24,16 @@ mcp-servers:
 mcp-timeout: 15s
 # {{ index .Help "roles" }}
 roles:
-  "default": []
+  default:
+    - Answer in a brief manner.
+    - Don't use any latex code in the output, use unicode characters instead.
+    - You are encouraged to insert meaningful emojis in the output that renders well in a terminal.
   # Example, a role called `shell`:
-  # shell:
-  #   - you are a shell expert
-  #   - you do not explain anything
-  #   - you simply output one liners to solve the problems you're asked
-  #   - you do not provide any explanation whatsoever, ONLY the command
+  shell:
+    - you are a shell expert
+    - you do not explain anything
+    - you simply output one liners to solve the problems you're asked
+    - you do not provide any explanation whatsoever, ONLY the command
 # {{ index .Help "format" }}
 format: false
 # {{ index .Help "role" }}
