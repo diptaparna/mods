@@ -70,10 +70,19 @@ type GenerationConfig struct {
 	ThinkingConfig   *ThinkingConfig `json:"thinkingConfig,omitempty"`
 }
 
+// GoogleSearchTool is an empty struct to represent the googleSearch tool.
+type GoogleSearchTool struct{}
+
+// Tool available for gemini API call. Currently this implements only `"googleSearch": {}`
+type Tool struct {
+	GoogleSearch GoogleSearchTool `json:"googleSearch"`
+}
+
 // MessageCompletionRequest represents the valid parameters and value options for the request.
 type MessageCompletionRequest struct {
 	Contents         []Content        `json:"contents,omitempty"`
 	GenerationConfig GenerationConfig `json:"generationConfig,omitempty"`
+	Tools            []Tool           `json:"tools,omitempty"`
 }
 
 // RequestBuilder is an interface for building HTTP requests for the Google API.
@@ -106,6 +115,7 @@ func (c *Client) Request(ctx context.Context, request proto.Request) stream.Stre
 			StopSequences:    request.Stop,
 			MaxOutputTokens:  4096,
 		},
+		Tools: []Tool{{GoogleSearch: GoogleSearchTool{}}},
 	}
 	gemini_global_messages = append(gemini_global_messages, request.Messages...)
 
@@ -128,7 +138,6 @@ func (c *Client) Request(ctx context.Context, request proto.Request) stream.Stre
 			ThinkingBudget: c.config.ThinkingBudget,
 		}
 	}
-
 	req, err := c.newRequest(ctx, http.MethodPost, c.config.BaseURL, withBody(body))
 	if err != nil {
 		stream.err = err
